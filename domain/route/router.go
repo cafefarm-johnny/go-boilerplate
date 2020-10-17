@@ -3,7 +3,7 @@ package route
 import (
 	"github.com/labstack/echo"
 	"go-boilerplate/domain/controller/index"
-	"net/http"
+	"go-boilerplate/domain/controller/user"
 )
 
 func Register(e *echo.Echo) {
@@ -15,7 +15,6 @@ func Register(e *echo.Echo) {
 func v1(e *echo.Echo) {
 	v1 := e.Group("/api/v1")
 
-	v1.GET("/users", func(ctx echo.Context) error {
-		return ctx.NoContent(http.StatusNoContent)
-	})
+	v1.GET("/users", user.Users)
+	v1.GET("/users/:name", user.User)
 }
